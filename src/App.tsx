@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import WeatherWidget from "./components/weather";
 import "./components/weather/fonts/calibri.ttf"
 
 function App() {
-  const [location, setLocation] = useState('Saransk');
-  const [modalActive, setModalActive] = useState(false);
-  const [modalContent, setModalContent] = useState("");
+  const [location, setLocation] = useState<string>('Saransk');
+  const [modalActive, setModalActive] = useState<boolean>(false);
+  const [modalContent, setModalContent] = useState<string>('');
   return (
     <div>
       <WeatherWidget

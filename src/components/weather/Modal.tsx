@@ -1,8 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import "./Modal.css";
 
-const Modal = ({ active, setActive, content, setLocation }) => {
-  const [inputValue, setInputValue] = useState('Saransk')
+interface ModalProps {
+  active: boolean;
+  setActive: (value: boolean) => void;
+  content: 'settings' | 'manageLocations';
+  setLocation: (location: string) => void;
+}
+
+const Modal: React.FC<ModalProps> = ({
+  active,
+  setActive,
+  content,
+  setLocation
+}) => {
+  const [inputValue, setInputValue] = useState<string>('Saransk');
 
   useEffect(() => {
     if (active) {
@@ -13,7 +25,7 @@ const Modal = ({ active, setActive, content, setLocation }) => {
     return () => document.body.classList.remove("modal-active");
   }, [active]);
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setLocation(inputValue)
   }
